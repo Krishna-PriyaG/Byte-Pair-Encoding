@@ -28,21 +28,39 @@ You can install the required libraries using `pip`:
 ```bash
 pip install nltk tqdm numpy matplotlib
 ```
-
+Additionally, you'll need to download the gutenberg book data for NLTK. You can do this by running the following Python command:
+```python
+import nltk
+nltk.download('gutenberg')
+```
 ## Usage
 
 ### Training BPE
+The following books were used for training the BPE model:
+
+- 'austen-emma.txt'
+- 'blake-poems.txt'
+- 'shakespeare-hamlet.txt'
+
 To train BPE on a corpus, use the Bytepairencoding function:
 ```python
 vocab, vocab_sizes, merge_frequencies = Bytepairencoding(corpus, num_merges=10000)
 ```
+### Testing BPE
+The following books were used for evaluating the BPE model:
+
+- 'whitman-leaves.txt'
+- 'shakespeare-macbeth.txt'
+- 'austen-sense.txt'
 
 ### Tokenizing Text
 To tokenize text using the trained BPE model, use the tokenize_with_bpe function:
 ```python
 tokenized_text, bpe_token = tokenize_with_bpe(evaluation_corpus, vocab)
 ```
+
 ## Evaluation
+
 The repository includes functions to evaluate the BPE tokenization performance, including accuracy, precision, recall, F1 score, and Jaccard similarity.
 
 ## Results
